@@ -85,6 +85,14 @@
 				<p>In addition, the following terminology is defined for use in this specification:</p>
 
 				<dl class="termlist">
+					<dt><dfn id="dfn-codec">Codec</dfn></dt>
+					<dd>
+						<p>Codec refers to content types that has intrinsic binary format qualities, such as video and audio media types which are already designed for optimum compression, or which provide optimized streaming capabilities.</p>
+					</dd>
+					<dt><dfn id="dfn-non-codec">Non-Codec</dfn></dt>
+					<dd>
+						<p>Non-Codec refers to content types that benefit from compression due to the nature of their internal data structure, such as file formats based on character strings (for example, HTML, CSS, etc.).</p>
+					</dd>
 					<dt><dfn id="dfn-package" data-lt="Packages">Package</dfn></dt>
 					<dd>
 						<p>In this specification, alias to Lightweight Publication Package.</p>
@@ -162,6 +170,23 @@
 	
 			</section>
 		
+			<section id="sec-compression">
+		
+					<h2>Compression of resources</h2>
+
+					<p>When stored in a Package, resources with <a>Non-Codec</a> content types SHOULD be compressed and the Deflate compression algorithm MUST be used. This practice ensures that file entries stored in the Package have a smaller size.</p>
+
+					<p>Resources with <a>Codec</a> content types SHOULD be stored without compression. In such case, compression would introduce unnecessary processing overhead at production time (especially with large resource files) and would impact audio/video playback performance at consumption time.</p>
+
+					<div class="note">
+							<p>In some cases, the combination of compression with some encryption schemes might 
+								even hinder the ability of user agents to handle partial content requests 
+								(e.g. HTTP byte ranges), due to the technical	difficulty to determine the length 
+								of the full resource ahead of media playback (e.g. HTTP Content-Length header).</p>
+					</div>
+	
+			</section>
+
 			<section id="sec-obtaining-manifest">
 
 				<h2>Obtaining a Publication Manifest</h2>		
@@ -237,7 +262,7 @@
 
 			<section id="sec-ua-conformance">
 
-					<h2>User agent Conformance</h2>
+					<h2>User Agent Conformance</h2>
 		
 					<p>A user agent conforms to this specification if it meets the following criteria:</p>
 		
