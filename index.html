@@ -296,34 +296,6 @@
 
 		<section id="app-manifest-examples" class="appendix informative">
 			<h2>Examples</h2>
-
-			<section>
-					<h3>Simple AudioBook Manifest</h3>
-	
-					<p>This example show a minimal <a>Publication Manifest</a> for an audiobook, suitable for inclusion in a package.</p>
-					<pre>
-		{
-			"@context" : ["https://schema.org", "https://www.w3.org/ns/wp-context"],    
-			"type"     : "Audiobook",
-			"id"       : "urn:isbn:9781449819934",
-			"name"     : "Moby Dick",
-			"author"   : "Herman Melville",
-			"readBy"   : "John Doe",
-			"readingOrder" : [
-				"content/introduction.mp3",
-				"content/epigraph.mp3",
-				"content/c001.mp3",
-				&#8230;
-				]
-		}
-					</pre>
-				</section>
-
-				<div class="note">
-						<p>In the <a href="https://w3c.github.io/wpub/#manifest">Publication Manifest specification</a>, the <a href="https://w3c.github.io/wpub/#canonical-identifier">Canonical Identifier</a> is optional and there is no <a href="https://w3c.github.io/wpub/#address">Web Publication Address</a>, the latter being defined for Web Publications only. This fits the use case of a packaged Publication, which is usually identified unambiguously but by definition "detached" from the Web.</p>
-				</div>	
-
-		</section>
 	
 		<section class="appendix informative" id="app-media-type">
 			<h2>The <code>application/lpf+zip</code> Media Type</h2>
