@@ -152,17 +152,19 @@
 	
 					<p>The contents of both files are specified in [[wpub]]; they MUST not be encrypted.</p>
 
-					<p>A Package MUST also include all resources within the bounds of the Publication, i.e. the finite set of resources obtained from the union of resources listed in the default reading order and resource list of the Publication Manifest.</p>
+					<p>A Package MUST also include all resources within the bounds of the Publication, 
+					i.e. the finite set of resources obtained from the union of resources listed 
+					in the default reading order and resource list of the Publication Manifest.</p>
 
 					<p>These resource files MAY be in any location descendant from the Root Directory.</p>
 
-					<p>Files within the Package MUST reference each other via relative paths, resolving to resources 
-						within the Package (i.e. at or below the <a>Root Directory</a>).</p>
+					<p>Files within the Package MUST reference each other via relative URL strings [[!url]], 
+					resolving to resources within the Package (i.e. at or below the <a>Root Directory</a>).</p>
 		
 					<div class="note">
 							<p>The [[zip]] specification has few constraints on the characters allowed for file and directory names. 
 								When crafting such names, authors must be careful to use characters which 
-								allow a broad interoperability among operating systems and are compatible with relative paths.</p>
+								allow a broad interoperability among operating systems.</p>
 					</div>
 	
 			</section>
@@ -231,9 +233,9 @@
 								</details>
 						</li>
 						<li>Otherwise: <ol>
-								<li>Let <var>manifest path</var> be the value of the <code>href</code> attribute. </li>
-								<li>If <var>manifest path</var> is not a relative path, then abort these steps. </li>
-								<li>Extract the Manifest from the Package using <var>manifest path</var>. </li>
+								<li>Let <var>manifest URL</var> be the value of the <code>href</code> attribute. </li>
+								<li>If <var>manifest URL</var> is not a relative URL string, then abort these steps. </li>
+								<li>Extract the Manifest from the Package using <var>manifest URL</var>. </li>
 								<li>Open and read the Manifest file, letting <var>text</var> be the result. </li>
 							</ol>
 							<details>
