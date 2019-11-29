@@ -45,11 +45,11 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>This specification defines a file format and processing model for packaging the set of related	resources and associated metadata that comprise a digital <a>Publication</a> into a single-file container, the <a>Lightweight Publication Package</a>.</p>
+			<p>This specification defines a file format and processing model for packaging the set of related	resources and associated metadata that comprise a <a>digital publication</a> into a single-file container, the <a>Lightweight Publication Package</a>.</p>
 		</section>
 
 		<section id="sotd">
-			<p>This draft provides a draft version of a Lightweight Packaging Format for <a>Publications</a>. 
+			<p>This draft provides a draft version of a Lightweight Packaging Format for <a>digital publications</a>. 
 				Many details are under active consideration within the Publishing Working Group and are subject to change. 
 				The most prominent known issues have been identified in this document and links provided to comment on them.</p>
 		</section>
@@ -60,15 +60,15 @@
 
 				<ul>
 					<li>
-						<p>to exchange in-progress packaged <a>Publications</a> between different individuals and/or
+						<p>to exchange in-progress packaged publications between different individuals and/or
 							different organizations;</p>
 					</li>
 					<li>
-						<p>to provide finalized packaged Publications from a publisher or conversion house to different distribution or
+						<p>to provide finalized packaged publications from a publisher or conversion house to different distribution or
 							sales channels; and</p>
 					</li>
 					<li>
-						<p>to deliver packaged Publications to users or user agents.</p>
+						<p>to deliver packaged publications to users or user agents.</p>
 					</li>
 				</ul>
 
@@ -98,13 +98,13 @@
 					<dd>
 						<p>The primary entry page represents the preferred starting resource for a <a>Web Publication</a>.  The structure of a Primary Entry Page is defined in [[wpub]].</p>
 					</dd>
-					<dt><dfn id="dfn-publication" data-lt="Publications">Publication</dfn></dt>
+					<dt><dfn id="dfn-publication" data-lt="Digital Publications">Digital Publication</dfn></dt>
 					<dd>
-						<p>A digital Publication is a collection of one or more constituent resources and associated metadata, organized together in a uniquely identifiable grouping.</p>
+						<p>A digital publication is a collection of one or more constituent resources and associated metadata, organized together in a uniquely identifiable grouping.</p>
 					</dd>
 					<dt><dfn id="dfn-web-publication-manifest" data-lt="Publication Manifests">Publication Manifest</dfn></dt>
 					<dd>
-						<p>A Publication Manifest represents structured information about a publication, such as informative metadata, a list of all resources, and a default reading order. The structure of a Publication Manifest is defined in [[wpub]].</p>
+						<p>A Publication Manifest represents structured information about a digital publication, such as informative metadata, a list of all resources, and a default reading order. The structure of a Publication Manifest is defined in [[wpub]].</p>
 					</dd>
 					<dt><dfn id="dfn-root-directory" data-lt="Root Directories">Root Directory</dfn></dt>
 					<dd>
@@ -203,7 +203,7 @@
 
 						<li>Let <var>manifest link</var> be the first <code>link</code> element 
 							in tree order in <code>Document</code> whose
-								<code>rel</code> attribute contains the <code>publication</code> token. </li>
+								<code>rel</code> attribute contains the <code>digital publication</code> token. </li>
 
 						<li>If <var>manifest link</var> is <code>null</code>, terminate this algorithm. </li>
 
