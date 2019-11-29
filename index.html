@@ -44,6 +44,7 @@
       </script>
 	</head>
 	<body>
+
 		<section id="abstract">
 			<p>This specification defines a file format and processing model 
 				for packaging into a single-file container the set of related resources 
@@ -51,7 +52,7 @@
 		</section>
 
 		<section id="sotd">
-			<p>This draft version will become a Group Note.</p>
+			<p>This draft version will soon become a Group Note.</p>
 		</section>
 
 		<section id="sec-introduction">
@@ -78,7 +79,7 @@
 		</section>
 
 		<section id="sec-terminology">
-			<h2>Terminology</h2>
+			<h1>Terminology</h1>
 
 			<p>This document uses terminology defined by the W3C Note "Publishing and Linking on the Web"&#160;[[publishing-linking]], including, in particular, <a class="externalDFN"
 				href="https://www.w3.org/TR/publishing-linking/#dfn-user">user</a> and <a class="externalDFN"
@@ -131,154 +132,149 @@
 			<!-- boilerplate will be added here -->
 		</section>
 
-		<section id="sec-specification">
-			<h1>Specification</h1>
+		<section id="sec-zip">
 
-			<section id="sec-zip">
+				<h1>Packaging format</h1>
 
-					<h2>Packaging format</h2>
+				<p>For packaging the set of constituent	resources and associated metadata that comprise a digital publication, this specification uses the ZIP format as specified in ISO/IEC 21320-1:2015 ([[zip]]).</p>
 
-					<p>For packaging the set of constituent	resources and associated metadata that comprise a digital publication, this specification uses the ZIP format as specified in ISO/IEC 21320-1:2015 ([[zip]]).</p>
+		</section>
 
-			</section>
-
-			<section id="sec-compression">
-		
-					<h2>Compression of resources</h2>
-
-					<p>When stored in a Package, resources with <a>Non-Codec content types</a> SHOULD be compressed and the Deflate compression algorithm MUST be used. This practice ensures that file entries stored in the Package have a smaller size.</p>
-
-					<p>Resources with <a>Codec content types</a> SHOULD be stored without compression. In such case, compression would introduce unnecessary processing overhead at production time (especially with large resource files) and would impact audio/video playback performance at consumption time.</p>
-
-					<div class="note">
-							<p>In some cases, the combination of compression with some encryption schemes might 
-								even hinder the ability of user agents to handle partial content requests 
-								(e.g. HTTP byte ranges), due to the technical	difficulty to determine the length 
-								of the full resource ahead of media playback (e.g. HTTP Content-Length header).</p>
-					</div>
+		<section id="sec-compression">
 	
-			</section>
+				<h1>Compression of resources</h1>
 
-			<section id="sec-structure">
-		
-					<h2>File and Directory Structure</h2>
+				<p>When stored in a Package, resources with <a>Non-Codec content types</a> SHOULD be compressed and the Deflate compression algorithm MUST be used. This practice ensures that file entries stored in the Package have a smaller size.</p>
 
-					<p>A <a>Package</a> MUST include at least one of the following files in its <a>Root Directory</a>:</p>
-						
-					<ul>
-							<li>A file named <code>publication.json</code>, 
-								which MUST be in the format defined for <a>Publication Manifests</a>.</li>
-						<li>A file named <code>index.html</code> which MUST follow the requirements of the 
-							<a>Primary Entry Page</a> of a digital publication.</li>
-						</ul>
+				<p>Resources with <a>Codec content types</a> SHOULD be stored without compression. In such case, compression would introduce unnecessary processing overhead at production time (especially with large resource files) and would impact audio/video playback performance at consumption time.</p>
 
-					<p>The Root Directory is virtual in nature: a user agent might or might 
-							not generate a physical root directory for the contents of the 
-							Package if such contents are unpackaged.</p>
+				<div class="note">
+						<p>In some cases, the combination of compression with some encryption schemes might 
+							even hinder the ability of user agents to handle partial content requests 
+							(e.g. HTTP byte ranges), due to the technical	difficulty to determine the length 
+							of the full resource ahead of media playback (e.g. HTTP Content-Length header).</p>
+				</div>
+
+		</section>
+
+		<section id="sec-structure">
 	
-					<p>The contents of both files MUST not be encrypted.</p>
+				<h1>File and Directory Structure</h1>
 
-					<p>A Package MUST also include all resources within the bounds of the digital publication, 
-					i.e. the finite set of resources obtained from the union of resources listed 
-					in the default reading order and resource list of the Publication Manifest.</p>
+				<p>A <a>Package</a> MUST include at least one of the following files in its <a>Root Directory</a>:</p>
+					
+				<ul>
+						<li>A file named <code>publication.json</code>, 
+							which MUST be in the format defined for <a>Publication Manifests</a>.</li>
+					<li>A file named <code>index.html</code> which MUST follow the requirements of the 
+						<a>Primary Entry Page</a> of a digital publication.</li>
+					</ul>
 
-					<p>These resource files MAY be in any location descendant from the Root Directory, or in the Root Directory itself.</p>
+				<p>The Root Directory is virtual in nature: a user agent might or might 
+						not generate a physical root directory for the contents of the 
+						Package if such contents are unpackaged.</p>
 
-					<p>Contents within the Package MUST reference these resources via relative-URL strings [[url]].</p>
-		
-					<div class="note">
-							<p>The [[zip]] specification has few constraints on the characters allowed 
-								for file and directory names. 
-								When crafting such names, authors must be careful to use characters which 
-								allow a broad interoperability among operating systems.</p>
-					</div>
+				<p>The contents of both files MUST not be encrypted.</p>
+
+				<p>A Package MUST also include all resources within the bounds of the digital publication, 
+				i.e. the finite set of resources obtained from the union of resources listed 
+				in the default reading order and resource list of the Publication Manifest.</p>
+
+				<p>These resource files MAY be in any location descendant from the Root Directory, or in the Root Directory itself.</p>
+
+				<p>Contents within the Package MUST reference these resources via relative-URL strings [[url]].</p>
 	
-			</section>
+				<div class="note">
+						<p>The [[zip]] specification has few constraints on the characters allowed 
+							for file and directory names. 
+							When crafting such names, authors must be careful to use characters which 
+							allow a broad interoperability among operating systems.</p>
+				</div>
 
-			<section id="sec-obtaining-manifest">
+		</section>
 
-				<h2>Obtaining a Publication Manifest</h2>		
+		<section id="sec-obtaining-manifest">
 
-				<p>If the Package contains a <code>publication.json</code> file 
-					located in the <a>Root Directory</a>, 
-					the Publication Manifest is obtained by	opening and parsing this file.</p>
-	
-				<p>Otherwise, if the Package contains an <code>index.html</code> file
-					located in the <a>Root Directory</a>, 
-					the Publication Manifest is obtained through the following steps:</p>
+			<h1>Obtaining a Publication Manifest</h1>		
 
-				<ol>
-						<li>Let <code>document</code> be the result of the extraction of the <code>index.html</code> 
-						file from the Package.</li>
+			<p>If the Package contains a <code>publication.json</code> file 
+				located in the <a>Root Directory</a>, 
+				the Publication Manifest is obtained by	opening and parsing this file.</p>
 
-						<li>If it does not have the media type <code>text/html</code> or
-								<code>application/xhtml+xml</code>, terminate this algorithm.</li>
+			<p>Otherwise, if the Package contains an <code>index.html</code> file
+				located in the <a>Root Directory</a>, 
+				the Publication Manifest is obtained through the following steps:</p>
 
-						<li>Let <var>manifest link</var> be the first <code>link</code> element 
-							in tree order in <code>Document</code> whose
-							<code>rel</code> attribute contains the <code>publication</code> token. </li>
+			<ol>
+					<li>Let <code>document</code> be the result of the extraction of the <code>index.html</code> 
+					file from the Package.</li>
 
-						<li>If <var>manifest link</var> is <code>null</code>, terminate this algorithm. </li>
+					<li>If it does not have the media type <code>text/html</code> or
+							<code>application/xhtml+xml</code>, terminate this algorithm.</li>
 
-						<li>If <var>manifest link</var>'s <code>href</code> attribute's value is the empty string,
-							terminate this algorithm. </li>
+					<li>Let <var>manifest link</var> be the first <code>link</code> element 
+						in tree order in <code>Document</code> whose
+						<code>rel</code> attribute contains the <code>publication</code> token. </li>
 
-						<li>
-							<p>If the <code>href</code> attribute value of <var>manifest link</var> has a non-null <a data-cite="!url#concept-url-fragment">fragment</a>
-								identifying an identifier <var>id</var> in <code>document</code>:</p>
-							<ol>
-								<li>Let <var>embedded manifest script</var> be the first <code>script</code>
-									element in tree order, whose <code>id</code> attribute is equal to
-										<var>id</var> and whose <code>type</code> attribute is equal to
-										<code>application/ld+json</code>.</li>
+					<li>If <var>manifest link</var> is <code>null</code>, terminate this algorithm. </li>
 
-								<li>If <var>embedded manifest script</var> is <code>null</code>, terminate this
-									algorithm.</li>
+					<li>If <var>manifest link</var>'s <code>href</code> attribute's value is the empty string,
+						terminate this algorithm. </li>
 
-								<li>Let <var>manifest text</var> be the
-									 <a data-cite="!dom#concept-child-text-content">child text content</a> 
-									 of <var>embedded manifest script</var></li>
-							</ol>
-							<details>
-									<summary>Explanation</summary>
-									<p>This branch is in use when the manifest is embedded in the primary entry page. The
-										algorithm locates the <code>script</code> element and extract the manifest itself.</p>
-								</details>
-						</li>
-						<li>Otherwise: <ol>
-								<li>Let <var>manifest URL</var> be the value of the <code>href</code> attribute. </li>
-								<li>If <var>manifest URL</var> is not a relative URL string, then abort these steps. </li>
-								<li>Extract the Manifest from the Package using <var>manifest URL</var>. </li>
-								<li>Open and read the Manifest file, letting <var>manifest text</var> be the result. </li>
-							</ol>
-							<details>
+					<li>
+						<p>If the <code>href</code> attribute value of <var>manifest link</var> has a non-null <a data-cite="!url#concept-url-fragment">fragment</a>
+							identifying an identifier <var>id</var> in <code>document</code>:</p>
+						<ol>
+							<li>Let <var>embedded manifest script</var> be the first <code>script</code>
+								element in tree order, whose <code>id</code> attribute is equal to
+									<var>id</var> and whose <code>type</code> attribute is equal to
+									<code>application/ld+json</code>.</li>
+
+							<li>If <var>embedded manifest script</var> is <code>null</code>, terminate this
+								algorithm.</li>
+
+							<li>Let <var>manifest text</var> be the
+									<a data-cite="!dom#concept-child-text-content">child text content</a> 
+									of <var>embedded manifest script</var></li>
+						</ol>
+						<details>
 								<summary>Explanation</summary>
-								<p>This branch is in use when the manifest is in a separate file. It performs the
-									standard operations to retrieve the manifest from the Package.</p>
+								<p>This branch is in use when the manifest is embedded in the primary entry page. The
+									algorithm locates the <code>script</code> element and extract the manifest itself.</p>
 							</details>
-						</li>
-				</ol>
-		
-				<p>If both <code>index.html</code> and <code>publication.json</code> are present in the Package, 
-				then the Primary Entry Page SHOULD contain a reference to the <code>publication.json</code> file, 
-				following the rules defined in this section.</p>
+					</li>
+					<li>Otherwise: <ol>
+							<li>Let <var>manifest URL</var> be the value of the <code>href</code> attribute. </li>
+							<li>If <var>manifest URL</var> is not a relative URL string, then abort these steps. </li>
+							<li>Extract the Manifest from the Package using <var>manifest URL</var>. </li>
+							<li>Open and read the Manifest file, letting <var>manifest text</var> be the result. </li>
+						</ol>
+						<details>
+							<summary>Explanation</summary>
+							<p>This branch is in use when the manifest is in a separate file. It performs the
+								standard operations to retrieve the manifest from the Package.</p>
+						</details>
+					</li>
+			</ol>
+	
+			<p>If both <code>index.html</code> and <code>publication.json</code> are present in the Package, 
+			then the Primary Entry Page SHOULD contain a reference to the <code>publication.json</code> file, 
+			following the rules defined in this section.</p>
 
-				<aside class="example">
-					<p>Here, the Publication Manifest, located in the Root Directory, 
-						is simply referenced from the Primary Entry Page via 
-						an [[HTML]] <code>link</code> element.</p>
-					<pre>
+			<aside class="example">
+				<p>Here, the Publication Manifest, located in the Root Directory, 
+					is simply referenced from the Primary Entry Page via 
+					an [[HTML]] <code>link</code> element.</p>
+				<pre>
 &lt;link href="publication.json" rel="publication"/&gt;
-					</pre>
-					<p>An example of a Primary Entry Page embedding a Publication Manifest is given in [[audiobooks]].
-				</aside>
-
-			</section>			
+				</pre>
+				<p>An example of a Primary Entry Page embedding a Publication Manifest is given in [[audiobooks]].
+			</aside>
 
 		</section>
 	
 		<section class="appendix" id="app-media-type">
-			<h2>The <code>application/lpf+zip</code> Media Type</h2>
+			<h1>The <code>application/lpf+zip</code> Media Type</h1>
 
 			<p>This appendix registers the media type <code>application/lpf+zip</code> 
 				for the Lightweight Packaging Format (LPF).</p>
@@ -377,6 +373,8 @@
 			</dl>
 
 		</section>
+
 		<div data-include="common/html/acknowledgements.html" data-include-replace="true"></div>
+
 	</body>
 </html>
