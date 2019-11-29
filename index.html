@@ -193,16 +193,16 @@
 
 		</section>
 
-		<section id="sec-obtaining-manifest">
+		<section class="informative" id="sec-obtaining-manifest">
 
 			<h1>Obtaining a Publication Manifest</h1>		
 
 			<p>If the Package contains a <code>publication.json</code> file 
-				located in the <a>Root Directory</a>, 
+				located in the Root Directory, 
 				the Publication Manifest is obtained by	opening and parsing this file.</p>
 
 			<p>Otherwise, if the Package contains an <code>index.html</code> file
-				located in the <a>Root Directory</a>, 
+				located in the Root Directory, 
 				the Publication Manifest is obtained through the following steps:</p>
 
 			<ol>
@@ -213,7 +213,7 @@
 							<code>application/xhtml+xml</code>, terminate this algorithm.</li>
 
 					<li>Let <var>manifest link</var> be the first <code>link</code> element 
-						in tree order in <code>Document</code> whose
+						in tree order in <code>document</code> whose
 						<code>rel</code> attribute contains the <code>publication</code> token. </li>
 
 					<li>If <var>manifest link</var> is <code>null</code>, terminate this algorithm. </li>
@@ -262,7 +262,7 @@
 			following the rules defined in this section.</p>
 
 			<aside class="example">
-				<p>Here, the Publication Manifest, located in the Root Directory, 
+				<p>Here, the Publication Manifest, located into the Root Directory, 
 					is simply referenced from the Primary Entry Page via 
 					an [[HTML]] <code>link</code> element.</p>
 				<pre>
