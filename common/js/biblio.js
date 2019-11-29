@@ -16,7 +16,7 @@
    }
 */
 
-var biblio = {
+var localBiblio = {
     "html": {
         "title": "HTML 5.2",
         "authors" : [
