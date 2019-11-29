@@ -45,7 +45,9 @@
 	</head>
 	<body>
 		<section id="abstract">
-			<p>This specification defines a file format and processing model for packaging the set of related	resources and associated metadata that comprise a <a>digital publication</a> into a single-file container, the Lightweight Publication Package.</p>
+			<p>This specification defines a file format and processing model 
+				for packaging into a single-file container the set of related resources 
+				and associated metadata that comprise a <a>digital publication</a>.</p>
 		</section>
 
 		<section id="sotd">
@@ -54,68 +56,74 @@
 
 		<section id="sec-introduction">
 			<h1>Introduction</h1>
-			<p>A Lightweight Publication Package is used:</p>
+			<p>A digital publication Package is used:</p>
 
 				<ul>
 					<li>
-						<p>to exchange in-progress packaged publications between different individuals and/or
+						<p>To exchange in-progress packaged publications between different individuals and/or
 							different organizations;</p>
 					</li>
 					<li>
-						<p>to provide finalized packaged publications from a publisher or conversion house to different distribution or
-							sales channels; and</p>
+						<p>To provide finalized packaged publications from a publisher or conversion house 
+						to different distribution or sales channels; and</p>
 					</li>
 					<li>
-						<p>to deliver packaged publications to users or user agents.</p>
+						<p>To deliver packaged publications to users or user agents.</p>
 					</li>
 				</ul>
 
-				<p>This specification is based on proven technologies and allows digital publications to be packaged in an easy way, hence the term "lightweight" used in its name.</p>
+				<p>This specification is based on proven technologies and allows digital publications 
+				to be packaged in an easy way, hence the term "lightweight" used in its name.</p>
 
-			<section id="sec-terminology">
-				<h2>Terminology</h2>
+		</section>
 
-				<p>This document uses terminology defined by the W3C Note "Publishing and Linking on the Web"&#160;[[publishing-linking]], including, in particular, <a class="externalDFN"
-					href="https://www.w3.org/TR/publishing-linking/#dfn-user">user</a> and <a class="externalDFN"
-					href="https://www.w3.org/TR/publishing-linking/#dfn-user-agent">user agent</a>.</p>
+		<section id="sec-terminology">
+			<h2>Terminology</h2>
 
-				<p>In addition, the following terminology is defined for use in this specification:</p>
+			<p>This document uses terminology defined by the W3C Note "Publishing and Linking on the Web"&#160;[[publishing-linking]], including, in particular, <a class="externalDFN"
+				href="https://www.w3.org/TR/publishing-linking/#dfn-user">user</a> and <a class="externalDFN"
+				href="https://www.w3.org/TR/publishing-linking/#dfn-user-agent">user agent</a>.</p>
 
-				<dl class="termlist">
-					<dt><dfn id="dfn-codec">Codec content types</dfn></dt>
-					<dd>
-						<p>Content types that have intrinsic binary format qualities, such as video and audio media types which are already designed for optimum compression, or which provide optimized streaming capabilities.</p>
-					</dd>
-					<dt><dfn id="dfn-non-codec">Non-Codec content types</dfn></dt>
-					<dd>
-						<p>Content types that benefit from compression due to the nature of their internal data structure, such as file formats based on character strings (for example, HTML, CSS, etc.).</p>
-					</dd>
-					<dt><dfn id="dfn-package" data-lt="Packages">Package</dfn></dt>
-					<dd>
-						<p>Single-file container for the set of constituent	resources and associated metadata that comprise a digital publication; alias to Lightweight Publication Package.</p>
-					</dd>
-					<dt><dfn id="dfn-primary-entry-page">Primary Entry Page</dfn></dt>
-					<dd>
-						<p>Preferred starting resource for a digital publication, 
-							enabling in some cases the discovery of its Publication Manifest.</p>
-					</dd>
-					<dt><dfn id="dfn-publication" data-lt="Digital Publications">Digital Publication</dfn></dt>
-					<dd>
-						<p>Set of constituent resources and associated metadata, organized together in a uniquely identifiable grouping.</p>
-					</dd>
-					<dt><dfn id="dfn-web-publication-manifest" data-lt="Publication Manifests">Publication Manifest</dfn></dt>
-					<dd>
-						<p>[[JSON-LD]] representation of a digital publication, defined in [[pub-manifest]].</p>
-					</dd>
-					<dt><dfn id="dfn-root-directory" data-lt="Root Directories">Root Directory</dfn></dt>
-					<dd>
-						<p>Base directory of the Package file system.</p>
-					</dd>
-				</dl>
+			<p>In addition, the following terminology is defined for use in this specification:</p>
 
-				<p>Only the first instance of a term in a section is linked to its definition.</p>
+			<dl class="termlist">
+				<dt><dfn id="dfn-codec">Codec content types</dfn></dt>
+				<dd>
+					<p>Content types that have intrinsic binary format qualities, such as video and audio 
+						media types which are already designed for optimum compression, 
+						or which provide optimized streaming capabilities.</p>
+				</dd>
+				<dt><dfn id="dfn-non-codec">Non-Codec content types</dfn></dt>
+				<dd>
+					<p>Content types that benefit from compression due to the nature of their internal 
+						data structure, such as file formats based on character strings (for example, HTML, CSS, etc.).</p>
+				</dd>
+				<dt><dfn id="dfn-package" data-lt="Packages">Package</dfn></dt>
+				<dd>
+					<p>Single-file container for the set of constituent	resources and associated metadata 
+						that comprise a digital publication.</p>
+				</dd>
+				<dt><dfn id="dfn-primary-entry-page">Primary Entry Page</dfn></dt>
+				<dd>
+					<p>Preferred starting resource for a digital publication, 
+						enabling in some cases the discovery of its Publication Manifest.</p>
+				</dd>
+				<dt><dfn id="dfn-publication" data-lt="Digital Publications">Digital Publication</dfn></dt>
+				<dd>
+					<p>Set of constituent resources and associated metadata, organized together 
+						in a uniquely identifiable grouping.</p>
+				</dd>
+				<dt><dfn id="dfn-web-publication-manifest" data-lt="Publication Manifests">Publication Manifest</dfn></dt>
+				<dd>
+					<p>[[JSON-LD]] representation of a digital publication as defined in [[pub-manifest]].</p>
+				</dd>
+				<dt><dfn id="dfn-root-directory" data-lt="Root Directories">Root Directory</dfn></dt>
+				<dd>
+					<p>Base directory of the Package file system.</p>
+				</dd>
+			</dl>
 
-			</section>
+			<p>Only the first instance of a term in a section is linked to its definition.</p>
 
 		</section>
 
