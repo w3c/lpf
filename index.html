@@ -90,7 +90,7 @@
 					</dd>
 					<dt><dfn id="dfn-primary-entry-page">Primary Entry Page</dfn></dt>
 					<dd>
-						<p>The primary entry page represents the preferred starting resource for a <a>Web Publication</a>.  The structure of a Primary Entry Page is defined in [[wpub]].</p>
+						<p>The primary entry page represents the preferred starting resource for a digital publication.</p>
 					</dd>
 					<dt><dfn id="dfn-publication" data-lt="Digital Publications">Digital Publication</dfn></dt>
 					<dd>
@@ -98,19 +98,15 @@
 					</dd>
 					<dt><dfn id="dfn-web-publication-manifest" data-lt="Publication Manifests">Publication Manifest</dfn></dt>
 					<dd>
-						<p>A Publication Manifest represents structured information about a digital publication, such as informative metadata, a list of all resources, and a default reading order. The structure of a Publication Manifest is defined in [[wpub]].</p>
+						<p>A Publication Manifest represents metadata and structural properties of a digital publication. 
+							The structure of a Publication Manifest is defined in [[pub-manifest]].</p>
 					</dd>
 					<dt><dfn id="dfn-root-directory" data-lt="Root Directories">Root Directory</dfn></dt>
 					<dd>
-						<p>The base of the Package file system. 
+						<p>The base directory of the Package file system. 
 							This directory is virtual in nature: a user agent might or might 
 							not generate a physical root directory for the contents of the 
 							Package if such contents are unzipped.</p>
-					</dd>
-					<dt><dfn id="dfn-web-publication" data-lt="Web Publications">Web Publication</dfn></dt>
-					<dd>
-						<p>A Web Publication is a digital Publication which is discoverable on the Web and presentable 
-							using Open Web Platform technologies. Web Publications are defined in [[wpub]].</p>
 					</dd>
 				</dl>
 
@@ -141,10 +137,10 @@
 							<li>A file named <code>publication.json</code>, 
 								which MUST be in the format defined for <a>Publication Manifests</a>.</li>
 						<li>A file named <code>index.html</code> which MUST follow the requirements of the 
-							<a>Primary Entry Page</a> of a Web Publication.</li>
+							<a>Primary Entry Page</a> of a digital publication.</li>
 						</ul>
 	
-					<p>The contents of both files are specified in [[wpub]]; they MUST not be encrypted.</p>
+					<p>The contents of both files MUST not be encrypted.</p>
 
 					<p>A Package MUST also include all resources within the bounds of the Publication, 
 					i.e. the finite set of resources obtained from the union of resources listed 
@@ -290,8 +286,10 @@
 			<p>This appendix registers the media type <code>application/lpf+zip</code> 
 				for the Lightweight Packaging Format (LPF).</p>
 
-			<p>A <a>Lightweight Packaging Format</a> (or LPF) file is a container technology based on the
-				[[zip]] archive format. It is used to encapsulate Web Publications. 
+			<p>A <a>Lightweight Packaging Format</a> (or LPF) file is a container technology 
+				based on the [[zip]] archive format, 
+				used for packaging into a single-file container the set of related resources 
+				and associated metadata that comprise a digital publication . 
 				LPF and its related standards are maintained and defined by the World Wide Web Consortium (W3C).</p>
 
 			<dl class="variablelist">
