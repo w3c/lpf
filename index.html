@@ -310,7 +310,7 @@
 				</dd>
 				<dt>Optional parameters:</dt>
 				<dd>
-					<p>None.</p>
+					<p>n/a</p>
 				</dd>
 				<dt>Encoding considerations:</dt>
 				<dd>
@@ -320,15 +320,18 @@
 				</dd>
 				<dt>Security considerations:</dt>
 				<dd>
-					<p>User agents that read LPF files should rigorously check the size 
+					<p>Security considerations that apply to <code>application/zip</code> also apply to LPF files. 
+						For instance, an archive could contain compressed files that expand 
+						to fill all available disk space on a hard drive. 
+						In consequence, user agents that read LPF files should rigorously check the size 
 						and validity of data retrieved.</p>
-					<p>In addition, because of the various content types that can be embedded in LPF files
-						, <code>application/lpf+zip</code> may describe content that poses security implications
-						beyond those noted here. However, only in cases where the user agent recognizes and processes the
-						additional content, or where further processing of that content is dispatched to other
-						user agents, would security issues potentially arise. In such cases, matters of security would
-						fall outside the domain of this registration document.</p>
-					<p>Security considerations that apply to <code>application/zip</code> also apply to LPF files.</p>
+					<p>In addition, because of the various content types that can be embedded in LPF files, 
+						<code>application/lpf+zip</code> may describe content that poses security issues,
+						e.g. malicious executable content deliberately included in the package. 
+						However, only in cases where the user agent recognizes and processes the additional content, 
+						or where further processing of that content is dispatched to other user agents, 
+						would security issues potentially arise. 
+						In such cases, matters of security would fall outside the domain of this registration document.</p>
 				</dd>
 				<dt>Interoperability considerations:</dt>
 				<dd>
@@ -351,7 +354,7 @@
 					<dl class="variablelist">
 						<dt>Magic number(s):</dt>
 						<dd>
-							<p>0: <code>PK 0x03 0x04</code></p>
+							<p><code>PK 0x03 0x04</code></p>
 						</dd>
 						<dt>File extension(s):</dt>
 						<dd>
